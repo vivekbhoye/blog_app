@@ -1,13 +1,12 @@
-
-from pyexpat import model
-from re import template
-from django.shortcuts import render
-from django.views.generic import ListView,DetailView,CreateView
-
+from django.urls import reverse_lazy
+from django.views.generic import ListView,DetailView
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from blog.models import Post
 
 # Create your views here.
-#home page list view
+
+# class based views 
+# home page list view
 class BlogListView(ListView):
     model = Post
     template_name = 'home.html'
@@ -18,6 +17,19 @@ class DetailPostView(DetailView):
     template_name = 'post_detail.html'
     context_object_name = 'post'
 
-# class NewPostCreate(CreateView):
-#     model = Post
-#     template_name = 'new_post.html'
+class BlogCreateView(CreateView):
+    model = Post
+    template_name = 'post_new.html'
+    fields = ['title', 'author', 'body']
+
+class BlogUpdateView(UpdateView):
+    model = Post
+    template_name = 'post_edit.html'
+    fields = ['title','body']
+
+
+class BlogDeleteView(DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    success_url = reverse_lazy('home')
+    

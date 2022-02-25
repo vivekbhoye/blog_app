@@ -5,6 +5,8 @@
 <div class="post-entry">
     <h2><a href="">{{ post.title }} <small> by {{ post.author }}</small></a></h2>
     <p></p>
+    <button><a href="{% url 'post_edit' post.pk %}">Update</a></button>
+    <button><a href="{% url 'post_delete' post.pk %}">Delete</a></button>
     <p>{{ post.body }}</p>
 </div>
 {% endblock content %}
