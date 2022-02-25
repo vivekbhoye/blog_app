@@ -13,6 +13,18 @@
     <header>
         <h1><a href="{% url 'home' %}">Django blog</a></h1>
     </header>
+    {% if user.is_authenticated %}
+        <p> Hello {{ user }} </p>
+        <div>
+            <button><a href="{% url 'logout' %}">Logout</a></button>
+        </div>
+        {% else %}
+        <p>Hello Anonymus</p>
+        <div>
+            <button><a href="{% url 'login' %}">Login</a></button>
+        </div>
+
+    {% endif %}
     <a href="{% url 'post_new' %}">Create New Post</a>
     <div>
         {% block content %}
