@@ -18,11 +18,13 @@ class DetailPostView(DetailView):
     template_name = 'post_detail.html'
     context_object_name = 'post'
 
+# this is form so we use fields 
 class BlogCreateView(CreateView):
     model = Post
     template_name = 'post_new.html'
     fields = ['title', 'author', 'body']
 
+# this is form so we use fields 
 class BlogUpdateView(UpdateView):
     model = Post
     template_name = 'post_edit.html'
